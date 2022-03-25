@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+
+class Node { 
+public: 
+	int data; 
+	Node* next; 
+}; 
+
+int main() {
+	
+	Node* head = NULL; 
+	Node* second = NULL; 
+ 	Node* third = NULL; 
+	Node* fourth = NULL;
+	
+	// allocate 4 nodes in the heap 
+	
+	head = new Node(); 
+ 	second = new Node(); 
+ 	third = new Node(); 
+	fourth = new Node();
+	
+	
+	/* four blocks have been allocated dynamically, from the head node to the 4th node */
+	
+	head->data = 4; 			// data of the node
+ 	head->next = second; 		// where the node's ganna point to next
+	
+ 	second->data = 3; 			// data of the node
+ 	head->next = third; 		// where the node's ganna point to next
+ 	
+	third->data = 2; 			// data of the node
+ 	third->next = fourth;		// where the node's ganna point to next
+	
+	fifth->data = 1;			// data of the node
+	fifth->next = NULL;			// where the node's ganna point to next
+	
+	
+	
+	return 0; 
+
+}
