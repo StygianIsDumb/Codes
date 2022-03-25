@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+int top = -1; 
+const int i = 3; // Constant variable for size of stack
+
+void push(int stack[], int a, int b) {
+    if (top == i-1) { // Checks if the stack is full and decides if it should proceed
+      cout << "Stack is full. Overflow condition!" << endl ; 
+    }
+    else {
+      top = top + 1;
+      stack[ top ] = a;
+    }
+  };
+
+  int topElement ( int stack[ ] ) {
+    return stack[top] ;
+  }
+ 
+
+  int main(){
+    int stack[i] ; // initialize stick with size of i
+ 	int s;	// variable for user input 
+    
+    cout << "Input " << i << " elements for the stack" << endl;
+
+    for(int c; c < i ; c++){ // execute loop based on size of stack and user input
+
+    	cout << "> ";
+    	cin >> s;
+    	push (stack , s , 3);	
+	}
+    
+    cout << endl << endl;
+    cout << "The current top element in the stack is " << topElement(stack) << "\n\n"; // prints out the current top element inside the stack
+    cout << "Displaying Stack" << endl;
+    cout << "Stack contents: ";  
+    
+	for(int u=0; u<i ; u++){ // will print out each element in the stack
+	
+		cout << stack[u] << ", ";
+	}
+	
+  	}
+  	
