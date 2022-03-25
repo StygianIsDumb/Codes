@@ -1,0 +1,127 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+struct diskRack{
+    private: 
+    int top; // current no. of stacks
+    string disks[5]; // stack container
+    int maxSize = sizeof(disks) / sizeof(disks[0]); // Current size of the container
+
+    void initialize(){ // sets all the slots of the array "disks" to none
+    for(int i; i < maxSize; i++){
+        disks[i] = "None";
+        }
+    };
+
+    public:
+    diskRack(){ //Creates the array and displays the array
+        top = -1;
+        initialize();
+        display();
+    }
+
+    void display(){
+    cout << "Disks: " << endl;
+    for(int i = 0; i < maxSize; i++){
+        cout << disks[i] << endl;
+        }
+    cout << "____________________" << endl;
+    };
+
+    bool isEmpty(){ // checks if the stack is empty
+        if (top == -1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    void addDisk(string nameDisk){
+        if(top == maxSize - 1){ // Checks if the stack is full
+            cout << "Rack is full" << endl;
+            cout << nameDisk << " cannot be added, please free up space before continuing.";
+            display();
+        } // if stack is full then it won't add, and if the stack is not full then it will proceed.
+        else{
+            top = top + 1;
+            disks[top] = nameDisk;
+            cout << nameDisk << " has been added to the rack." << endl;
+            display();
+        }
+    };
+
+    void removeDisk(){ // checks if the stack is empty, if not empty then remove the top item.
+        if(isEmpty()){
+            cout << "Rack is Empty." << endl;
+            display();
+        }
+        else{
+            cout << disks[top] << "has been removed." << endl;
+            disks[top] = "None";
+            top = top - 1;
+            display();
+        }
+    };
+
+    void diskCount(){ // Shows the current size or amount of items in the stack.
+        cout << "Disk amount = " << top + 1 << endl;
+    };
+
+    void checkTop(){ // Shows the last added or top item in the stack.
+        cout << "Top disk is: " << disks[top] << endl;
+    };
+};
+
+int main(){
+    diskRack rack; // Creates a diskrack object named rack
+    int option;
+    bool menu = true; // Stops while loop
+    while(menu != false){
+        // Displays list of choices for switch case
+        cout << "1. Add to rack" << endl;
+        cout << "2. Remove from rack" << endl;
+        cout << "3. Display current items in rack" << endl;
+        cout << "4. Count items in rack" << endl;
+        cout << "5. Check last added / top disk in rack" << endl;
+        cout << "6. Clear Console display" << endl;
+        cout << "7. Exit" << endl;
+        cout << "/n Input Option: ";
+        cin >> option; // input option for switch case
+
+        system("cls"); // clears display
+
+        switch(option){ // uses the "option" input for a switch case operation
+        case 1:{
+            string diskName;
+            cout << "Enter disk name: " << endl;
+            cin >> diskName;
+            rack.addDisk(diskName);
+            } break;
+        case 2:{
+            rack.removeDisk();
+            } break;
+        case 3:{
+            rack.display();
+            } break;
+        case 4:{
+            rack.diskCount();
+            } break;
+        case 5:{
+            rack.checkTop();
+            } break;
+        case 6:{
+            system("cls");
+            } break;
+        case 7:{
+            menu = false;
+            cout << "Exited console" << endl;
+            } break;
+        default:{
+            cout << "Option does not exist / Invalid" << endl;
+            } break;
+        }
+    }
+    return 0;
+}
